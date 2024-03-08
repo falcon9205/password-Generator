@@ -50,11 +50,12 @@ const App = () => {
             value={Password}
             placeholder='password'
             readOnly
+            className='rounded-lg'
             ref={passref}
           />
 
           {/* Copy button */}
-          <button className='bg-blue-600 p-2' onClick={copypassword}  >Copy</button>
+          <button className='bg-blue-600 p-2 rounded-lg ml-1' onClick={copypassword}  >Copy</button>
         </div>
 
         {/* div that containt range-input , number allowed check field, special-character check field */}
@@ -69,7 +70,7 @@ const App = () => {
           />
 
           {/* label to see how much is the range selected by user */}
-          <label className='text-white'>Length:{Length}</label>
+          <label className='text-white font-extralight'>Length:{Length}</label>
 
           {/* Numbers checkbox */}
           <input type='checkbox'
@@ -78,7 +79,7 @@ const App = () => {
             onChange={() => {
               setNumAllow((prev) => !(prev))
             }} />
-          <label className='text-white'>Numbers</label>
+          <label className='text-white font-extralight'>Numbers</label>
 
           {/* special-characters checkbox */}
           <input type='checkbox' className='ml-3'
@@ -86,7 +87,7 @@ const App = () => {
             onChange={() => {
               setCharAllow((prev) => !(prev))
             }} />
-          <label className='text-white'>Special-Characters</label>
+          <label className='text-white font-extralight'>Special-Characters</label>
         </div>
 
 
