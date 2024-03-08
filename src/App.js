@@ -25,15 +25,16 @@ const App = () => {
 
   const copypassword = useCallback(()=>{
     window.navigator.clipboard.writeText(Password)
+    alert("Password copied")
   },[Password])
-
+ 
   useEffect(()=>{
     passwordgenerator()
   },[Length,NumAllow,CharAllow,passwordgenerator])
-
+  
   return (
     <>
-      <div className='bg-gray-700 sm:h-full place-items-center sm:w-1/3 w-screen  p-5 sm:m-auto mt-10 rounded-lg'>
+      <div className='bg-gray-700 sm:h-full place-items-center sm:w-1/3 w-screen m- p-4 m-auto sm:m-auto  rounded-lg'>
         <h1 className='text-white text-center text-2xl'>Password Generator</h1>
         <div className='flex justify-center'>
         <input type='text' 
@@ -42,7 +43,7 @@ const App = () => {
         readOnly
         ref={passref}
         />
-        <button className='bg-blue-600 p-2' onClick={copypassword}>Copy</button>
+        <button className='bg-blue-600 p-2' onClick={copypassword}  >Copy</button>
         </div>
         <div className='justify-center sm:flex'>
           <input type='range'
