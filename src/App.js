@@ -1,10 +1,11 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
 
 const App = () => {
   const [Password,setPassword] = useState("");
   const [Length,setLength] = useState(8);
   const [NumAllow,setNumAllow] = useState(false);
   const [CharAllow,setCharAllow] = useState(false);
+  const passref = useRef(null)
 
   const passwordgenerator = useCallback(()=>{
     let pass = ""
@@ -20,23 +21,30 @@ const App = () => {
     setPassword(pass)
   },[Length,NumAllow,CharAllow])
 
+  
+
+  const copypassword = useCallback(()=>{
+    window.navigator.clipboard.writeText(Password)
+  },[Password])
+
   useEffect(()=>{
     passwordgenerator()
   },[Length,NumAllow,CharAllow,passwordgenerator])
 
   return (
     <>
-      <div className='bg-gray-700 h-full place-items-center w-1/3 m-auto mt-10 rounded-lg'>
+      <div className='bg-gray-700 sm:h-full place-items-center sm:w-1/3 w-screen  p-5 sm:m-auto mt-10 rounded-lg'>
         <h1 className='text-white text-center text-2xl'>Password Generator</h1>
         <div className='flex justify-center'>
         <input type='text' 
         value={Password}
         placeholder='password'
         readOnly
+        ref={passref}
         />
-        <button className='bg-blue-600 p-2'>Copy</button>
+        <button className='bg-blue-600 p-2' onClick={copypassword}>Copy</button>
         </div>
-        <div className='flex justify-center'>
+        <div className='justify-center sm:flex'>
           <input type='range'
           min={8}
           max={26}
