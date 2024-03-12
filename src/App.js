@@ -28,6 +28,7 @@ const App = () => {
 
   //method which make the password copies to your clipboard
   const copypassword = useCallback(() => {
+    passref.current?.select();
     window.navigator.clipboard.writeText(Password)
     alert("Password copied")
   }, [Password])
@@ -55,7 +56,7 @@ const App = () => {
           />
 
           {/* Copy button */}
-          <button className='bg-blue-600 p-2 rounded-lg ml-1' onClick={copypassword}  >Copy</button>
+          <button className='bg-blue-600 p-2 hover:bg-blue-700 rounded-lg ml-1 border-solid border-2 border-black ' onClick={copypassword}  >Copy</button>
         </div>
 
         {/* div that containt range-input , number allowed check field, special-character check field */}
@@ -89,8 +90,6 @@ const App = () => {
             }} />
           <label className='text-white font-extralight'>Special-Characters</label>
         </div>
-
-
       </div>
     </>
   )
